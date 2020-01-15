@@ -1,0 +1,41 @@
+<link rel="stylesheet" href="../../../css/main.css">
+
+<div class="wrapper">
+    <!-- Sidebar  -->
+    <nav id="sidebar">
+        <div class="sidebar-header">
+            <img src="../../../images/depdikbud.png">
+        </div>
+
+        <ul class="list-unstyled components">
+
+            <div class="sidebar-header">
+                <h6>Kelolah Data SKP</h6>
+            </div>
+            <li>
+                <a ui-sref="pegawai-skp">SKP</a>
+            </li>
+            <li>
+                <a ui-sref="pegawai-realisasi">Realiasi</a>
+            </li>
+
+        </ul>
+    </nav>
+
+    <!-- Page Content  -->
+    <div id="content">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <div class="content-header-text">
+                    <h6>DINAS PENDIDIKAN DAN KEBUDAYAAN</h6>
+                    <h6>KABUPATEN KEEROM</h6>
+                </div>
+                <userlogin class="user-login"></userlogin>
+
+            </div>
+        </nav>
+        <div class="content-main">
+            <ui-view></ui-view>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,67 @@
+.login-main {
+  margin: 0px;
+  text-align: center;
+}
+
+.login-main .login-header {
+  border: 1px solid whitesmoke;
+  padding: 20px;
+  background: rgba(223, 238, 167, 0.5);
+  height: 15%;
+}
+
+.login-main .login-header p {
+  font-size: x-large;
+  font-weight: bold;
+}
+
+.login-main .login-body {
+  background: rgba(233, 238, 217, 0.5);
+  text-align: start;
+  padding: 30px;
+  width: 400px;
+  height: auto;
+  margin: auto;
+  margin-top: 50px;
+  border: 1px solid whitesmoke;
+  -webkit-box-shadow: whitesmoke 12px;
+          box-shadow: whitesmoke 12px;
+}
+
+.login-main .login-body .login-logo {
+  margin: auto;
+  text-align: center;
+}
+
+.login-main .login-body .login-logo img {
+  width: 30%;
+}
+
+.info-auth {
+  margin-bottom: 15px !important;
+}
+
+@media screen and (max-width: 500px) {
+  .login-main {
+    text-align: center;
+  }
+  .login-main .login-header {
+    margin: 0;
+    height: 20%;
+  }
+  .login-main .login-header p {
+    font-size: smaller;
+  }
+  .login-main .login-body {
+    width: 95%;
+    margin-top: 10px;
+  }
+  .login-main .login-body .login-logo {
+    margin: auto;
+    text-align: center;
+  }
+  .login-main .login-body .login-logo img {
+    width: 30%;
+  }
+}
+/*# sourceMappingURL=auth.css.map */

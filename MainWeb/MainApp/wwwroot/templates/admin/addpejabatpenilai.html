@@ -1,0 +1,48 @@
+<div class="card">
+    <div class="card-header">
+        <h5>Tambah Pejabat Penilai</h5>
+    </div>
+
+    <div class="card-body">
+        <label for="Cari Pegawai"></label>
+        <form class="form-inline" ng-submit=find(nip)>
+            <input ng-change="searchChange()" class="form-control mr-sm-2" type="search" ng-model="nip"
+                placeholder="NIP" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Cari</button>
+        </form>
+
+        <form style="margin:20px" ng-if="model" ng-submit="register(model)">
+            <div class="form-group">
+                <label for="nip">NIP</label>
+                <input ng-model="model.nip" class="form-control" required autofocus>
+            </div>
+
+            <div class="form-group">
+                <label for="nama">Nama</label>
+                <input ng-model="model.nama" class="form-control" required autofocus>
+            </div>
+
+
+            <div class="form-group">
+                <label for="pangkat">Pangkat</label>
+                <input ng-model="model.pangkat" class="form-control" required autofocus>
+            </div>
+            <div class="form-group">
+                <label for="tmt">TMT</label>
+                <input ng-model="model.tmtShow" class="form-control" required autofocus>
+            </div>
+            <div class="form-group">
+                <label>Unit Kerja</label>
+                <input ng-model="model.unitorganisasi" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="jabatan">Jabatan</label>
+                <input ng-model="model.jabatan.nama" class="form-control" required autofocus>
+            </div>
+            <a ng-click="setAsPejabat(model)" class="btn btn-success pull-right" ui-shref="Login">Set Sebagai Pejabat
+                Penilai</a>
+        </form>
+
+    </div>
+</div>

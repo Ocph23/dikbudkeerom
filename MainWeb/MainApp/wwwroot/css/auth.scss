@@ -1,0 +1,68 @@
+$mainColor: #0092de;
+$secondColor: rgb(223, 238, 167);
+$secondColor50: rgba(223, 238, 167, 0.5);
+$secondColor30: rgba(233, 238, 217, 0.5);
+
+.login-main {
+  margin: 0px;
+  text-align: center;
+  .login-header {
+    border: 1px solid whitesmoke;
+    padding: 20px;
+    background: $secondColor50;
+    height: 15%;
+    p {
+      font-size: x-large;
+      font-weight: bold;
+    }
+  }
+
+  .login-body {
+    background: $secondColor30;
+    text-align: start;
+    padding: 30px;
+    width: 400px;
+    height: auto;
+    margin: auto;
+    margin-top: 50px;
+    border: 1px solid whitesmoke;
+    box-shadow: whitesmoke 12px;
+
+    .login-logo {
+      margin: auto;
+      text-align: center;
+      img {
+        width: 30%;
+      }
+    }
+  }
+}
+
+.info-auth {
+  margin-bottom: 15px !important;
+}
+
+@media screen and(max-width:500px) {
+  .login-main {
+    text-align: center;
+    .login-header {
+      margin: 0;
+      height: 20%;
+      p {
+        font-size: smaller;
+      }
+    }
+
+    .login-body {
+      width: 95%;
+      margin-top: 10px;
+      .login-logo {
+        margin: auto;
+        text-align: center;
+        img {
+          width: 30%;
+        }
+      }
+    }
+  }
+}

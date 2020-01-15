@@ -1,0 +1,127 @@
+<div class="card">
+    <div class="card-header">
+        <div class="row">
+            <div class="col">
+                <h5>Penilaian Realisasi Target SKP Dan Perilaku</h5>
+            </div>
+            <div class="col">
+                <button ng-if="periode.canaddpenilaian" ng-click="save(Penilaian)"
+                    class="btn btn-info pull-right">Simpan</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div class="biodata">
+            <div class="baris">
+                <label>Nama</label>
+                <label class="labelValue">: {{skp.pegawai.nama}}</label>
+            </div>
+            <div class="baris">
+                <label>NIP</label>
+                <label class="labelValue">: {{skp.pegawai.nip}}</label>
+            </div>
+            <div class="baris">
+                <label>Jabatan</label>
+                <label class="labelValue">: {{skp.pegawai.jabatan.nama}}</label>
+            </div>
+            <div class="baris">
+                <label>Unit Kerja</label>
+                <label class="labelValue">: {{skp.pegawai.unitorganisasi}}</label>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h4>Target SKP</h4>
+            </div>
+            <div class="card-body">
+
+                <table class="table table-bordered" datatable="ng">
+                    <thead>
+                        <tr>
+                            <th rowspan="2">No</th>
+                            <th rowspan="2">Kegiatan</th>
+                            <th colspan="4">Target</th>
+                            <th colspan="4">Realisasi</th>
+                            <th rowspan="2">Peng hitunga </th>
+                            <th rowspan="2">Nilai Capaian SKP</th>
+                        </tr>
+                        <tr>
+                            <th>AK</th>
+                            <th>Kuantitas</th>
+                            <th>Kualitas</th>
+                            <th>Biaya</th>
+                            <th>AK</th>
+                            <th>Kuantitas</th>
+                            <th>Kualitas</th>
+                            <th>Biaya</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="data in Penilaian.targetskps">
+                            <td class="nomor">{{$index+1}}</td>
+                            <td>{{data.kegiatan}}</td>
+                            <td class="tdValue">{{data.kuantitas*data.bobot|number :2}}</td>
+                            <td class="tdValue">{{data.kuantitas}}</td>
+                            <td class="tdValue">{{data.kualitas}}</td>
+                            <td class="tdValue">{{data.realisasi.biaya}}</td>
+                            <td class="tdValue">{{data.realisasi.kuantitas*data.bobot|number :2}}</td>
+                            <td class="tdValue">{{data.realisasi.kuantitas}}</td>
+                            <td class="tdValue"><input ng-change="changeValue(data)" class="form-control" type="number"
+                                    ng-model="data.realisasi.kualitas">
+                            </td>
+                            <td class="tdValue">{{data.realisasi.biaya}}</td>
+                            <td class="tdValue">{{data.total |number :2}}</td>
+                            <td class="tdValue">{{data.capaian|number :2}}</td>
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <h4>Perilaku</h4>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered" datatable="ng">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Perilaku</th>
+                            <th>Nilai</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="data in Penilaian.perilaku">
+                            <td class="nomor">{{$index+1}}</td>
+                            <td>{{data.perilaku}}</td>
+                            <td class="tdValue"><input ng-change="changePerilakuValue(data)" class="form-control"
+                                    type="number" ng-model="data.nilaiperilaku.nilai">
+                            </td>
+                            <td class="tdValue">{{data.nilaiperilaku.status}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+<style>
+    .card {
+        margin-top: 20px;
+    }
+
+    th,
+    td,
+    input {
+        font-size: 12px !important;
+    }
+</style>

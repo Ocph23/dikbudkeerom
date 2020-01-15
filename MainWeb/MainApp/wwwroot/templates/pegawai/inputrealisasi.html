@@ -1,0 +1,88 @@
+<div class="card">
+    <div class="card-header">
+        <div class="row">
+            <div class="col">
+                <h5>Realisasi Target SKP</h5>
+            </div>
+            <div class="col">
+                <i ng-click="print()" class="fa fa-print fa-2x pull-right"></i>
+                <i ng-if="periode.canaddrealisasi" class="fa fa-save fa-2x text-success pull-right"
+                    ng-click="save(data)"></i>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="card-body">
+        <table class="table" datatable="ng">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Kegiatan</th>
+                    <th>Kuantitas</th>
+                    <th>Waktu</th>
+                    <th>Biaya</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="data in data.targetskps">
+                    <td>{{$index+1}}</td>
+                    <td>{{data.kegiatan}}</td>
+                    <td><input class="form-control" type="number" ng-model="data.realisasi.kuantitas"></td>
+                    <td><input class="form-control" type="number" ng-model="data.realisasi.waktu"></td>
+                    <td><input class="form-control" type="number" ng-model="data.realisasi.biaya"></td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form ng-submit="save(model)">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Target </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="formGroupExampleInput">Kegiatan</label>
+                        <textarea class="form-control" id="formGroupExampleInput" placeholder="Kegiatan"
+                            ng-model="model.kegiatan"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput2">Kuantitas</label>
+                        <input type="number" max="12" class="form-control" id="formGroupExampleInput2"
+                            placeholder="Kuantitas" ng-model="model.kuantitas">
+                    </div>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput3">Kualitas (%)</label>
+                        <input type="number" max="100" value="100" class="form-control" id="formGroupExampleInput2"
+                            placeholder="Kualitas" ng-model="model.kualitas">
+                    </div>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput4">Waktu (Bulan)</label>
+                        <input type="number" max="12" value="12" class="form-control" id="formGroupExampleInput2"
+                            placeholder="Masa Penilaian" ng-model="model.waktu">
+                    </div>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput5">Biaya</label>
+                        <input type="number" class="form-control" id="formGroupExampleInput2" placeholder="Biaya"
+                            ng-model="model.biaya">
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

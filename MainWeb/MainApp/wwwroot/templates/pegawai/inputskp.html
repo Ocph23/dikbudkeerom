@@ -1,0 +1,113 @@
+<div class="card">
+    <div class="card-header">
+        <div class="row">
+            <div class="col">
+                <h5>Target SKP</h5>
+            </div>
+            <div class="col">
+                <i ng-click="print()" class="fa fa-print fa-2x pull-right"></i>
+                <i class="fa fa-plus fa-2x text-success pull-right" ng-click="create()" data-toggle="modal"
+                    data-target="#exampleModal"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-body">
+        <table class="table" datatable="ng">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Kegiatan</th>
+                    <th class="text-center" ng-if="jenisJabatan==='Fungsional'">AK</th>
+                    <th>Kuantitas</th>
+                    <th>Kualitas</th>
+                    <th>Waktu</th>
+                    <th>Biaya</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="data in datas">
+                    <td>{{$index+1}}</td>
+                    <td style="width: 40%;">{{data.kegiatan}}</td>
+                    <td class="text-center" ng-if="jenisJabatan==='Fungsional'">{{data.bobot*data.kuantitas}}</td>
+                    <td class="text-center">{{data.kuantitas}}</td>
+                    <td class="text-center">{{data.kualitas}}</td>
+                    <td class="text-center">{{data.waktu}}</td>
+                    <td class="text-right">{{data.biaya}}</td>
+                    <td>
+                        <a href="" ng-click="selectedItem(data)" data-toggle="modal" data-target="#exampleModal"><i
+                                class="fa fa-edit fa-2x text-warning pull-right"></i></a>
+                        <a href="" ng-click="delete(data)"><i class="fa fa-remove fa-2x text-danger pull-right"></i></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form ng-submit="save(model)">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Target </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div ng-if="jenisJabatan==='Fungsional'">
+                        <div class="form-group ">
+                            <label for="formGroupExampleInput">Kegiatan</label>
+                            <div class="form-group autoComplete">
+                                <textarea type="text" placeholder="Cari Kegiatan" ng-model="model.satuan"
+                                    typeahead-on-select="selectTypeAhead($item)"
+                                    typeahead="state.kegiatanText for state in SatuanKerja | filter:{kegiatan:$viewValue} | limitTo:8"
+                                    class="form-control"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput">Deskripsi Kegiatan</label>
+                        <textarea class="form-control" id="formGroupExampleInput" placeholder="Kegiatan"
+                            ng-model="model.kegiatan"></textarea>
+                    </div>
+
+                    <div class="form-group" ng-if="jenisJabatan==='Struktural'">
+                        <label>Jenis Kegiatan</label>
+                        <select class="form-control" ng-model="model.jenis" required
+                            ng-options="item as item for item in JenisKegiatan track by item"></select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="formGroupExampleInput2">Kuantitas</label>
+                        <input type="number" max="12" class="form-control" placeholder="Kuantitas"
+                            ng-model="model.kuantitas">
+                    </div>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput3">Kualitas</label>
+                        <input type="number" max="100" value="100" class="form-control" placeholder="Kualitas"
+                            ng-model="model.kualitas">
+                    </div>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput4">Waktu</label>
+                        <input type="number" max="12" value="12" class="form-control" placeholder="Masa Penilaian"
+                            ng-model="model.waktu">
+                    </div>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput5">Biaya</label>
+                        <input type="number" class="form-control" placeholder="Biaya" ng-model="model.biaya">
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

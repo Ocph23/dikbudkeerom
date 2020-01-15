@@ -1,0 +1,93 @@
+<div class="card">
+    <div class="card-header">
+        <div class="row">
+            <div class="col">
+                <h5>Satuan Kerja</h5>
+            </div>
+            <div class="col">
+                <button ng-click="model={}" class="btn btn-info pull-right" data-toggle="modal"
+                    data-target="#exampleModal">Tambah</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div class="biodata">
+            <div class="baris">
+                <label>Nama Jabatan</label>
+                <label class="labelValue">: {{Jabatan.nama}}</label>
+            </div>
+            <div class="baris">
+                <label>Jenis Jabatan</label>
+                <label class="labelValue">: {{Jabatan.jenis}}</label>
+            </div>
+
+        </div>
+        <table class="table tabe-bordered" datatable="ng">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Kegiatan</th>
+                    <th>Bobot AK</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="data in datas">
+                    <td>{{$index+1}}</td>
+                    <td style="width: 70%;">{{data.kegiatan}}</td>
+                    <td class="text-center">{{data.bobot}}</td>
+                    <td>
+                        <a href="" ng-click="selectedItem(data)" data-toggle="modal" data-target="#exampleModal"><i
+                                class="fa fa-edit fa-2x text-warning pull-right"></i></a>
+                        <a href="" ng-click="delete(data)"><i class="fa fa-remove fa-2x text-danger pull-right"></i></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form ng-submit="save(model)">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Kegiatan </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="formGroupExampleInput">Nama Kegiatan</label>
+                        <textarea class="form-control" id="formGroupExampleInput" placeholder="Kegiatan"
+                            ng-model="model.kegiatan"></textarea>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="formGroupExampleInput">Jenis Kegiatan</label>
+                        <select class="form-control" ng-options="item as item for item in Kegiatan track by item"
+                            ng-model="model.jenis"></select>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="formGroupExampleInput">Bobot Angka Kredit</label>
+                        <input type="number" class="form-control" step="0.01" placeholder="Bobot"
+                            ng-model="model.bobot">
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,111 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="assets\index.html" />
+    <Content Include="wwwroot\bower_components\angular-local-storage\.bower.json" />
+    <Content Include="wwwroot\bower_components\angular-local-storage\bower.json" />
+    <Content Include="wwwroot\bower_components\angular-local-storage\demo\demo-style.css" />
+    <Content Include="wwwroot\bower_components\angular-local-storage\demo\demo.html" />
+    <Content Include="wwwroot\bower_components\angular-local-storage\package.json" />
+    <Content Include="wwwroot\bower_components\angular-ui-router\.bower.json" />
+    <Content Include="wwwroot\bower_components\angular-ui-router\artifacts.json" />
+    <Content Include="wwwroot\bower_components\angular-ui-router\bower.json" />
+    <Content Include="wwwroot\bower_components\angular-ui-router\downstream_projects.json" />
+    <Content Include="wwwroot\bower_components\angular-ui-router\tslint.json" />
+    <Content Include="wwwroot\bower_components\angular-ui-router\typedoc.json" />
+    <Content Include="wwwroot\bower_components\angular\.bower.json" />
+    <Content Include="wwwroot\bower_components\angular\angular-csp.css" />
+    <Content Include="wwwroot\bower_components\angular\bower.json" />
+    <Content Include="wwwroot\bower_components\angular\package.json" />
+    <Content Include="wwwroot\bower_components\swangular\.bower.json" />
+    <Content Include="wwwroot\bower_components\swangular\bower.json" />
+    <Content Include="wwwroot\bower_components\swangular\package-lock.json" />
+    <Content Include="wwwroot\bower_components\sweetalert2\.bower.json" />
+    <Content Include="wwwroot\bower_components\sweetalert2\bower.json" />
+    <Content Include="wwwroot\bower_components\sweetalert2\dist\sweetalert2.css" />
+    <Content Include="wwwroot\bower_components\sweetalert2\dist\sweetalert2.min.css" />
+    <Content Include="wwwroot\bower_components\sweetalert2\index.html" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.0.0" />
+    <PackageReference Include="Ocph.DAL.MySql" Version="1.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\bower_components\angular-local-storage\.bowerrc" />
+    <None Include="wwwroot\bower_components\angular-local-storage\.editorconfig" />
+    <None Include="wwwroot\bower_components\angular-local-storage\.gitattributes" />
+    <None Include="wwwroot\bower_components\angular-local-storage\.gitignore" />
+    <None Include="wwwroot\bower_components\angular-local-storage\.travis.yml" />
+    <None Include="wwwroot\bower_components\angular-local-storage\CHANGELOG.md" />
+    <None Include="wwwroot\bower_components\angular-local-storage\demo\demo-app.js" />
+    <None Include="wwwroot\bower_components\angular-local-storage\dist\angular-local-storage.js" />
+    <None Include="wwwroot\bower_components\angular-local-storage\dist\angular-local-storage.min.js" />
+    <None Include="wwwroot\bower_components\angular-local-storage\dist\angular-local-storage.min.js.map" />
+    <None Include="wwwroot\bower_components\angular-local-storage\index.js" />
+    <None Include="wwwroot\bower_components\angular-local-storage\LICENSE" />
+    <None Include="wwwroot\bower_components\angular-local-storage\README.md" />
+    <None Include="wwwroot\bower_components\angular-ui-router\CHANGELOG.md" />
+    <None Include="wwwroot\bower_components\angular-ui-router\CONTRIBUTING.md" />
+    <None Include="wwwroot\bower_components\angular-ui-router\DOCS.md" />
+    <None Include="wwwroot\bower_components\angular-ui-router\ISSUE_TEMPLATE.md" />
+    <None Include="wwwroot\bower_components\angular-ui-router\karma.conf.js" />
+    <None Include="wwwroot\bower_components\angular-ui-router\LICENSE" />
+    <None Include="wwwroot\bower_components\angular-ui-router\README.md" />
+    <None Include="wwwroot\bower_components\angular-ui-router\release\angular-ui-router.js" />
+    <None Include="wwwroot\bower_components\angular-ui-router\release\angular-ui-router.js.map" />
+    <None Include="wwwroot\bower_components\angular-ui-router\release\angular-ui-router.min.js" />
+    <None Include="wwwroot\bower_components\angular-ui-router\release\angular-ui-router.min.js.map" />
+    <None Include="wwwroot\bower_components\angular-ui-router\release\resolveService.js" />
+    <None Include="wwwroot\bower_components\angular-ui-router\release\resolveService.js.map" />
+    <None Include="wwwroot\bower_components\angular-ui-router\release\resolveService.min.js" />
+    <None Include="wwwroot\bower_components\angular-ui-router\release\resolveService.min.js.map" />
+    <None Include="wwwroot\bower_components\angular-ui-router\release\stateEvents.js" />
+    <None Include="wwwroot\bower_components\angular-ui-router\release\stateEvents.js.map" />
+    <None Include="wwwroot\bower_components\angular-ui-router\release\stateEvents.min.js" />
+    <None Include="wwwroot\bower_components\angular-ui-router\release\stateEvents.min.js.map" />
+    <None Include="wwwroot\bower_components\angular-ui-router\release\ui-router-angularjs.js" />
+    <None Include="wwwroot\bower_components\angular-ui-router\release\ui-router-angularjs.js.map" />
+    <None Include="wwwroot\bower_components\angular-ui-router\release\ui-router-angularjs.min.js" />
+    <None Include="wwwroot\bower_components\angular-ui-router\release\ui-router-angularjs.min.js.map" />
+    <None Include="wwwroot\bower_components\angular-ui-router\rollup.config.js" />
+    <None Include="wwwroot\bower_components\angular-ui-router\yarn.lock" />
+    <None Include="wwwroot\bower_components\angular\angular.js" />
+    <None Include="wwwroot\bower_components\angular\angular.min.js" />
+    <None Include="wwwroot\bower_components\angular\angular.min.js.gzip" />
+    <None Include="wwwroot\bower_components\angular\angular.min.js.map" />
+    <None Include="wwwroot\bower_components\angular\index.js" />
+    <None Include="wwwroot\bower_components\angular\LICENSE.md" />
+    <None Include="wwwroot\bower_components\angular\README.md" />
+    <None Include="wwwroot\bower_components\swangular\LICENSE" />
+    <None Include="wwwroot\bower_components\swangular\README.md" />
+    <None Include="wwwroot\bower_components\swangular\swangular.js" />
+    <None Include="wwwroot\bower_components\sweetalert2\dist\sweetalert2.all.js" />
+    <None Include="wwwroot\bower_components\sweetalert2\dist\sweetalert2.all.min.js" />
+    <None Include="wwwroot\bower_components\sweetalert2\dist\sweetalert2.common.js" />
+    <None Include="wwwroot\bower_components\sweetalert2\dist\sweetalert2.js" />
+    <None Include="wwwroot\bower_components\sweetalert2\dist\sweetalert2.min.js" />
+    <None Include="wwwroot\bower_components\sweetalert2\LICENSE" />
+    <None Include="wwwroot\bower_components\sweetalert2\README.md" />
+    <None Include="wwwroot\bower_components\sweetalert2\src\colors.scss" />
+    <None Include="wwwroot\bower_components\sweetalert2\src\mixins.scss" />
+    <None Include="wwwroot\bower_components\sweetalert2\src\sweetalert2.all.js" />
+    <None Include="wwwroot\bower_components\sweetalert2\src\sweetalert2.js" />
+    <None Include="wwwroot\bower_components\sweetalert2\src\sweetalert2.scss" />
+    <None Include="wwwroot\bower_components\sweetalert2\src\utils\classes.js" />
+    <None Include="wwwroot\bower_components\sweetalert2\src\utils\dom.js" />
+    <None Include="wwwroot\bower_components\sweetalert2\src\utils\params.js" />
+    <None Include="wwwroot\bower_components\sweetalert2\src\utils\utils.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="wwwroot\bower_components\sweetalert2\sweetalert2.d.ts" />
+  </ItemGroup>
+
+</Project>

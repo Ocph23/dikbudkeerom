@@ -1,0 +1,322 @@
+<div class="container skp">
+
+    <div class="title">
+        <h5>PENILAIAN CAPAIAN SASRAN KERJA</h5>
+        <h5>PEGAWAI NEGERI SIPIL</h5>
+    </div>
+    <div class="info-jangkawaktu">
+
+    </div>
+    <div class="skp-body">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th rowspan="2">No</th>
+                    <th rowspan="2">Kegiatan</th>
+                    <th colspan="4">Target</th>
+                    <th colspan="4">Realisasi</th>
+                    <th rowspan="2">Peng hitunga </th>
+                    <th rowspan="2">Nilai Capaian SKP</th>
+                </tr>
+                <tr>
+                    <th>AK</th>
+                    <th>Kuantitas</th>
+                    <th>Kualitas</th>
+                    <th>Biaya</th>
+                    <th>AK</th>
+                    <th>Kuantitas</th>
+                    <th>Kualitas</th>
+                    <th>Biaya</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="data in Penilaian.targetskps">
+                    <td class="nomor">{{$index+1}}</td>
+                    <td>{{data.kegiatan}}</td>
+                    <td class="tdValue">{{data.kuantitas*data.bobot|number :2}}</td>
+                    <td class="tdValue">{{data.kuantitas}}</td>
+                    <td class="tdValue">{{data.kualitas}}</td>
+                    <td class="tdValue">{{data.realisasi.biaya}}</td>
+                    <td class="tdValue">{{data.realisasi.kuantitas*data.bobot|number :2}}</td>
+                    <td class="tdValue">{{data.realisasi.kuantitas}}</td>
+                    <td class="tdValue">{{data.realisasi.kualitas}}</td>
+                    <td class="tdValue">{{data.realisasi.biaya}}</td>
+                    <td class="tdValue">{{data.total |number :2}}</td>
+                    <td class="tdValue">{{data.capaian|number :2}}</td>
+
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="2" class="text-center">Jumlah Angka Kredit</td>
+                    <td>{{sumAK(Penilaian.targetskps)|number :2}}</td>
+                    <td colspan="3"></td>
+                    <td>{{sumAK(Penilaian.realisasi)|number :2}}</td>
+                    <td colspan="4"></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td rowspan="2" colspan="11" class="text-center">Nilai Capaian SKP</td>
+                    <td class="text-center">{{sumCapaian(Penilaian.targetskps)/Penilaian.targetskps.length|number :2}}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">{{nilaiText(sumCapaian(Penilaian.targetskps)/Penilaian.targetskps.length)}}
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+        <div class="ttdcapaian pull-right">
+            <div class="ttdmain">
+                <br />
+                <div>Keerom, {{skp.tanggal|date:'dd-MM-yyyy'}}</div>
+                <div>Panitia Penilai</div>
+                <div class="nama">{{skp.pejabatPenilai.nama}}</div>
+                <div class="nip">NIP.{{skp.pejabatPenilai.nip}}</div>
+            </div>
+
+
+        </div>
+    </div>
+    <div style='page-break-after:always'></div>
+
+    <div class="skp-body">
+
+        <table class="table">
+            <tr>
+                <td style="width: 50%;">
+                    <div class="keberatan">
+                        <h6>6. REKOMENDASI</h6>
+
+                        <p class="tanggal"></p>
+                    </div>
+                    <div class="keberatan">
+                        <div class="ttdcapaianx">
+                            <div class="ttdmain">
+                                <br />
+                                <div>9.Dibuat Tanggal: {{skp.tanggal|date:'dd-MM-yyyy'}}</div>
+                                <div>Panitia Penilai</div>
+                                <div class="nama">{{skp.pejabatPenilai.nama}}</div>
+                                <div class="nip">NIP.{{skp.pejabatPenilai.nip}}</div>
+                            </div>
+                        </div>
+                        <div class="ttdcapaiany">
+                            <div class="ttdmain">
+                                <br />
+                                <div>10. Diterima Tanggal : {{skp.tanggal|date:'dd-MM-yyyy'}}</div>
+                                <div>pegawai Negeri Sipil Yang Dinilai</div>
+                                <div class="nama">{{skp.pejabatPenilai.nama}}</div>
+                                <div class="nip">NIP.{{skp.pejabatPenilai.nip}}</div>
+                            </div>
+                        </div>
+                        <div class="ttdcapaianz">
+                            <div class="ttdmain">
+                                <br />
+                                <div>11. Diterima Tanggal {{skp.tanggal|date:'dd-MM-yyyy'}}</div>
+                                <div>Atasn Pejabat</div>
+                                <div class="nama">{{skp.atasanPejabatPenilai.nama}}</div>
+                                <div class="nip">NIP.{{skp.pejabatPenilai.nip}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="title">
+                        <img style="width:75px" src="../../images/garuda.png" alt="">
+                        <h6>PENILAIAN PRESTASI KERJA</h6>
+                        <h6>PEGAWAI NEGERI SIPIL</h6>
+                    </div>
+                    <div class="info-jangkawaktu">
+                        <table class="table">
+                            <tr>
+                                <td>
+                                    <div> <label>DINAS PENDIDIKAN DAN KEBUDAYAAN</label></div>
+                                    <div><label>KABUPATEN KEEROM</label></div>
+                                </td>
+                                <td style="text-align: right;">
+                                    <div> <label>JANGKA WAKTU</label></div>
+                                    <div><label class="text-right">TANGGAL 01 JANUARI S/D 31 DESEMBER 2020</label></div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <td rowspan="6" colspan="2">1</td>
+                                <td colspan="2">YANG DINILAI</td>
+                            </tr>
+                            <tr>
+                                <td>a. Nama</td>
+                                <td>{{skp.pegawai.nama}}</td>
+                            </tr>
+                            <tr>
+                                <td>b. NIP</td>
+                                <td>{{skp.pegawai.nip}}</td>
+                            </tr>
+                            <tr>
+                                <td>C. pangkat, Golongan Ruang, TMT</td>
+                                <td>{{skp.pegawai.pangkat}}/ {{skp.pegawai.tmt|date:'dd-MM-yy'}}</td>
+                            </tr>
+                            <tr>
+                                <td>d. Jabatan/Pekerjaan</td>
+                                <td>{{skp.pegawai.jabatan.nama}}</td>
+                            </tr>
+                            <tr>
+                                <td>e. Unit Organisasi</td>
+                                <td>{{skp.pegawai.unitorganisasi}}</td>
+                            </tr>
+                            <!--Pejabat Penilaia-->
+                            <tr>
+                                <td rowspan="6" colspan="2">1</td>
+                                <td colspan="2">PEJABAT PENILAI</td>
+                            </tr>
+                            <tr>
+                                <td>a. Nama</td>
+                                <td>{{skp.pejabatPenilai.nama}}</td>
+                            </tr>
+                            <tr>
+                                <td>b. NIP</td>
+                                <td>{{skp.pejabatPenilai.nip}}</td>
+                            </tr>
+                            <tr>
+                                <td>C. pangkat, Golongan Ruang, TMT</td>
+                                <td>{{skp.pejabatPenilai.pangkat}}/ {{skp.pejabatPenilai.tmt|date:'dd-MM-yy'}}</td>
+                            </tr>
+                            <tr>
+                                <td>d. Jabatan/Pekerjaan</td>
+                                <td>{{skp.pejabatPenilai.jabatan.nama}}</td>
+                            </tr>
+                            <tr>
+                                <td>e. Unit Organisasi</td>
+                                <td>{{skp.pejabatPenilai.unitorganisasi}}</td>
+                            </tr>
+                            <!--Atasan Pejabat Penilaia-->
+                            <tr>
+                                <td rowspan="6" colspan="2">1</td>
+                                <td colspan="2">PEJABAT PENILAI</td>
+                            </tr>
+                            <tr>
+                                <td>a. Nama</td>
+                                <td>{{skp.atasanPejabatPenilai.nama}}</td>
+                            </tr>
+                            <tr>
+                                <td>b. NIP</td>
+                                <td>{{skp.atasanPejabatPenilai.nip}}</td>
+                            </tr>
+                            <tr>
+                                <td>C. pangkat, Golongan Ruang, TMT</td>
+                                <td>{{skp.atasanPejabatPenilai.pangkat}}/ {{skp.pejabatPenilai.tmt|date:'dd-MM-yy'}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>d. Jabatan/Pekerjaan</td>
+                                <td>{{skp.atasanPejabatPenilai.jabatan.nama}}</td>
+                            </tr>
+                            <tr>
+                                <td>e. Unit Organisasi</td>
+                                <td>{{skp.atasanPejabatPenilai.unitorganisasi}}</td>
+                            </tr>
+
+
+
+
+
+
+                        </thead>
+
+                    </table>
+
+                </td>
+            </tr>
+        </table>
+
+
+    </div>
+
+    <div style='page-break-after:always'></div>
+
+    <div class="penilaian-body">
+
+        <table class="table">
+            <tr>
+                <td style="width: 50%;">
+                    <table class="table table-bordered">
+                        <tr>
+                            <td rowspan="{{Penilaian.perilaku.length+6}}">4.</td>
+                            <th colspan="6">UNSUR YANG DINILAI</th>
+                            <th>JUMLAH</th>
+                        </tr>
+                        <tr>
+                            <td colspan="6">a. Sasaran Kerja Pegawai (SKP)<span>8*8</span></td>
+                            <td>200</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="{{Penilaian.perilaku.length+4}}" colspan="3">b.Perilaku Kerja</td>
+                        </tr>
+                        <tr ng-repeat="data in Penilaian.perilaku">
+                            <td>{{$index+1}}. {{data.perilaku}}</td>
+                            <td>{{data.nilaiperilaku.nilai}}</td>
+                            <td>{{data.nilaiperilaku.nilai}}</td>
+                            <td class="tdValue">{{data.nilaiperilaku.status}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{Penilaian.perilaku.length+1}}. Jumlah</td>
+                            <td>{{jumlah()}}</td>
+
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>{{Penilaian.perilaku.length+2}}. Nilai Rata-Rata</td>
+                            <td>{{jumlah()/Penilaian.perilaku.length}}</td>
+                            <td>{{nilaiText(jumlah())}}</td>
+                            <td>Jumlah</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">{{Penilaian.perilaku.length+3}}. Nilai Perilaku Kerja <span
+                                    class="text-right">
+                                    {{jumlah()/Penilaian.perilaku.length}} x 40%
+                                </span></td>
+                            <td>
+                                {{(jumlah()/Penilaian.perilaku.length)*40/100 }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td rowspan="2" colspan="7">NILAI PRESTASI KERJA </td>
+                            <td>xx</td>
+                        </tr>
+                        <tr>
+                            <td>(Baik)</td>
+                        </tr>
+                        <tr>
+                            <td colspan="8">
+                                <div class="keberatan-pegawai">
+                                    <h6>6. KEBERATAN DARI PEGAWAI NEGERI</h6>
+                                    <h6>YANG DINILAI APABILA ADA</h6>
+                                    <p class="tanggal">Tanggal, ............</p>
+                                </div>
+                            </td>
+                        </tr>
+
+                    </table>
+
+                </td>
+                <td>
+                    <div class="keberatan">
+                        <h6>6. TANGGAPAN PEJABAT PENILAI</h6>
+                        <h6>ATAS KEBERATAN</h6>
+                        <p class="tanggal">Tanggal, ............</p>
+                    </div>
+                    <div class="keberatan">
+                        <h6>7. KEPUTUSAN ATASAN PEJABAT</h6>
+                        <h6>PENILAIAN ATAS KEBERATAN</h6>
+                        <p class="tanggal">Tanggal, ............</p>
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+    </div>
+</div>

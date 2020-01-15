@@ -1,0 +1,75 @@
+<div class="card">
+    <div class="card-header">
+        <div class="row">
+            <div class="col">
+                <h5>Data Jabatan</h5>
+            </div>
+            <div class="col">
+                <button ng-click="model={}" class="btn btn-info pull-right" data-toggle="modal"
+                    data-target="#exampleModal">Tambah</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-body">
+        <table class="table" datatable="ng">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Nama Jabatan</th>
+                    <th>Jenis Jabatan</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="data in datas">
+                    <td>{{$index+1}}</td>
+                    <td>{{data.nama}}</td>
+                    <td>{{data.jenis}}</td>
+                    <td>
+                        <a href="" ng-click="selectedItem(data)" data-toggle="modal" data-target="#exampleModal"><i
+                                class="fa fa-edit fa-2x text-warning pull-right"></i></a>
+                        <a href="" ng-click="delete(data)"><i class="fa fa-remove fa-2x text-danger pull-right"></i></a>
+                        <a ng-if="data.jenis=='Fungsional'" ui-sref="admin-satuankerja({data:data})"><i
+                                class="fa fa-list fa-2x  pull-right"></i></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form ng-submit="save(model)">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Perilaku </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="formGroupExampleInput">Nama Jabatan</label>
+                        <input type="text" class="form-control" placeholder="Nama Jabatan" ng-model="model.nama">
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="formGroupExampleInput">Jenis Jabatan</label>
+                        <select class="form-control" ng-options="item as item for item in JenisJabatan track by item"
+                            ng-model="model.jenis"></select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

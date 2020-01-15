@@ -1,0 +1,28 @@
+<div class="card">
+    <div class="card-header">
+        <h5>Data Pejabat Penilai</h5>
+    </div>
+
+    <div class="card-body">
+        <table class="table" datatable="ng">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>NIP</th>
+                    <th>Nama</th>
+                    <th>Pangkat/Golongan</th>
+                    <th>Jabatan</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="data in pegawais">
+                    <td>{{$index+1}}</td>
+                    <td>{{data.pegawai.nip}}</td>
+                    <td>{{data.pegawai.nama}}</td>
+                    <td>{{data.pegawai.pangkat}}</td>
+                    <td>{{data.pegawai.jabatan.nama}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

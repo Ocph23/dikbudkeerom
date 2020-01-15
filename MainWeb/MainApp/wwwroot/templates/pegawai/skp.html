@@ -1,0 +1,92 @@
+<div class="card">
+    <div class="card-header">
+        <div class="row">
+            <div class="col">
+                <h5>SKP</h5>
+            </div>
+            <div class="col" ng-if="canaddskp">
+                <i class="fa fa-plus fa-2x text-success pull-right" ng-click="create()" data-toggle="modal"
+                    data-target="#exampleModal"></i>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="card-body">
+        <table class="table" datatable="ng">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Tahun Penilaian</th>
+                    <th>Pejabat Penilai</th>
+                    <th>Atasan Pejabat</th>
+                    <th>Tanggal Pengajuan</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="data in datas">
+                    <td>{{$index+1}}</td>
+                    <td>{{data.periode.tahun}}</td>
+                    <td>{{data.pejabatPenilai.nama}}</td>
+                    <td>{{data.atasanPejabatPenilai.nama}}</td>
+                    <td class="text-center">{{data.tanggal|date:'dd MM yyyy'}}</td>
+                    <td>
+                        <a href="" ng-click="delete(data)"><i class="fa fa-remove fa-2x text-danger pull-right"></i></a>
+                        <a href="" ng-click="selectedItem(data)" data-toggle="modal" data-target="#exampleModal"><i
+                                class="fa fa-edit fa-2x text-warning pull-right"></i></a>
+                        <a ui-sref="pegawai-inputskp({Id:data.idskp,idperiode:data.idperiode})"><i
+                                class="fa fa-list fa-2x  pull-right"></i></a>
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form ng-submit="save(model)">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">SKP </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="formGroupExampleInput">Tahun Penilaian</label>
+                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Kegiatan"
+                            ng-model="model.tahun" required disabled>
+                    </div>
+                    <div class="form-group">
+                        <label>Pejabat Penilai</label>
+                        <select class="form-control" ng-model="model.pejabatPenilai" required
+                            ng-options="item as item.pegawai.nama for item in Pejabat track by item.idpejabat"
+                            ng-model="idpejabatpenilai"></select>
+                    </div>
+                    <div class="form-group">
+                        <label>Atasan Pejabat Penilai</label>
+                        <select class="form-control" ng-model="model.atasanPejabatPenilai" required
+                            ng-options="item as item.pegawai.nama for item in Pejabat track by item.idpejabat"
+                            ng-model="idatasanpenilai"></select>
+                    </div>
+                    <div class="form-group">
+                        <label>Tanggal</label>
+                        <input type="date" class="form-control" placeholder="Bobot" ng-model="model.tanggal" required>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

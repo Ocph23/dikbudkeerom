@@ -1,0 +1,113 @@
+body {
+  background: none !important;
+}
+
+.skp {
+  .title {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    text-align: center;
+  }
+  .info-jangkawaktu {
+  }
+
+  .skp-body {
+  }
+  .penilaian-body {
+  }
+}
+
+th,
+td {
+  font-size: 12px;
+  padding: 4px !important;
+}
+
+.tdValue {
+  width: 50px;
+  text-align: center;
+}
+
+.keberatan {
+  border: 1px silver solid;
+  padding: 10px;
+  .tanggal {
+    margin-top: 230px;
+    text-align: center;
+  }
+}
+
+.keberatan-pegawai {
+  padding: 5px;
+  .tanggal {
+    margin-top: 200px;
+    text-align: center;
+  }
+}
+
+h6 {
+  font-size: 14px;
+}
+
+@page {
+  size: auto;
+}
+
+@media print {
+  .penilaian-body {
+    clear: both;
+    page-break-after: always;
+  }
+}
+
+.td-penilaian {
+  padding: 0px !important;
+  table {
+    margin: 0px;
+  }
+}
+
+.ttdmain {
+  text-align: center;
+  .nama {
+    text-decoration: underline;
+    margin-top: 50px;
+    text-transform: uppercase;
+  }
+}
+
+.ttdcapaian {
+  text-align: right;
+  width: 300px;
+  margin-bottom: 50px;
+}
+
+.ttdcapaianx {
+  text-align: right;
+
+  .ttdmain {
+    text-align: right;
+    .nama {
+      text-decoration: underline;
+      margin-top: 50px;
+      text-transform: uppercase;
+    }
+  }
+}
+
+.ttdcapaiany {
+  left: 50px;
+
+  .ttdmain {
+    text-align: left;
+    .nama {
+      text-decoration: underline;
+      margin-top: 50px;
+      text-transform: uppercase;
+    }
+  }
+}
+
+.ttdcapaianz {
+  left: 50px;
+}

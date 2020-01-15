@@ -1,0 +1,89 @@
+.home {
+  text-align: center;
+}
+
+.home img {
+  width: 200px;
+  margin: 20px;
+}
+
+.home h4 {
+  margin: 20px;
+}
+
+.home .user {
+  margin-top: 50px;
+}
+
+@media only screen and (max-width: 500px) {
+  .home {
+    text-align: center;
+  }
+  .home img {
+    width: 100px;
+    margin: 20px;
+  }
+  .home h4 {
+    font-size: 12px;
+  }
+}
+
+.dataTables_info {
+  display: none;
+}
+
+#DataTables_Table_1_info {
+  display: none !important;
+}
+
+.dataTables_length {
+  margin: 0 !important;
+}
+
+.dataTables_filter input[type="search"] {
+  border: 1px solid #e4e4e4;
+  border-radius: 15px !important;
+  margin-left: 20px !important;
+}
+
+th {
+  text-align: center !important;
+  vertical-align: middle !important;
+}
+
+.tdValue {
+  width: 7%;
+}
+
+.nomor {
+  width: 30px;
+}
+
+.biodata {
+  display: inline;
+  margin: 10px;
+}
+
+.biodata label {
+  width: 150px;
+  font-weight: bold;
+}
+
+.biodata .labelValue {
+  width: 50%;
+  font-weight: normal;
+}
+
+.autoComplete .dropdown-menu {
+  max-width: 90%;
+}
+
+.autoComplete .dropdown-menu li {
+  margin-left: 10px !important;
+  margin-bottom: 10px !important;
+}
+
+.autoComplete .dropdown-menu textarea {
+  height: auto !important;
+}
+/*# sourceMappingURL=main.css.map */

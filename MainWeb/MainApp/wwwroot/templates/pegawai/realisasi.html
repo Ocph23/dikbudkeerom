@@ -1,0 +1,38 @@
+<div class="card">
+    <div class="card-header">
+        <div class="row">
+            <div class="col">
+                <h5>Realisasi</h5>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-body">
+        <table class="table" datatable="ng">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Tahun Penilaian</th>
+                    <th>Pejabat Penilai</th>
+                    <th>Atasan Pejabat</th>
+                    <th>Tanggal Pengajuan</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="data in datas">
+                    <td>{{$index+1}}</td>
+                    <td>{{data.periode.tahun}}</td>
+                    <td>{{data.pejabatPenilai.nama}}</td>
+                    <td>{{data.atasanPejabatPenilai.nama}}</td>
+                    <td class="text-center">{{data.tanggal|date:'dd MM yyyy'}}</td>
+                    <td>
+                        <a ui-sref="pegawai-inputrealisasi({Id:data.idskp,idperiode:data.idperiode})"
+                            ng-click="selectedItem(data)" data-toggle="modal" data-target="#exampleModal"><i
+                                class="fa fa-edit fa-2x text-warning pull-right"></i></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
