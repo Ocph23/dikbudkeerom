@@ -9,6 +9,7 @@ angular
 	.controller('pegawai.inputskp.controller', InputSkpController);
 function PegawaiController($scope, AuthService, $state) {
 	AuthService.Init([ 'pegawai' ]);
+	$state.go('pegawai-home');
 }
 
 function HomeController($scope, AuthService, $state) {}
