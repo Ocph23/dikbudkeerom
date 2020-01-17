@@ -2,8 +2,10 @@ angular
 	.module('app.pejabatPenilai.controller', [])
 	.controller('pejabat.controller', PejabatController)
 	.controller('pejabat.home.controller', PejabatHomeController)
-	.controller('pejabat.nilai.controller', PejabatNiliaController)
-	.controller('pejabat.pegawai.controller', PejabatPegawaiController);
+	.controller('pejabat.pegawai.controller', PejabatPegawaiController)
+	.controller('pejabat.persetujuan.controller', PersetujuanPegawaiController)
+	.controller('pejabat.setujuinilai.controller', PejabatSetujuiNiliaController)
+	.controller('pejabat.nilai.controller', PejabatNiliaController);
 
 function PejabatController($scope, AuthService, $state) {
 	AuthService.Init([ 'pejabat' ]);
@@ -26,9 +28,33 @@ function PejabatPegawaiController($scope, AuthService, PegawaiService, PeriodeSe
 	$scope.SelectedPeriode = function(data) {
 		setTimeout((x) => {
 			$scope.datas = [];
-			AuthService.profile().then((x) => {
+			AuthService.profile().then((profile) => {
 				PegawaiService.pejabatGetPegawaiByPeriodeId(data.idperiode).then((z) => {
-					$scope.datas = z;
+					$scope.datas = z.filter((x) => x.pejabatPenilai.idpegawai == profile.idpegawai);
+				});
+			});
+		}, 500);
+	};
+
+	$scope.canChangeData = function(data) {
+		$scope.periode;
+	};
+}
+
+function PersetujuanPegawaiController($scope, AuthService, PegawaiService, PeriodeService) {
+	PeriodeService.get().then((x) => {
+		$scope.periodes = x;
+		PeriodeService.aktifPeriode().then((m) => {
+			$scope.periode = m;
+		});
+	});
+
+	$scope.SelectedPeriode = function(data) {
+		setTimeout((x) => {
+			$scope.datas = [];
+			AuthService.profile().then((profile) => {
+				PegawaiService.pejabatGetPegawaiByPeriodeId(data.idperiode).then((z) => {
+					$scope.datas = z.filter((x) => x.atasanPejabatPenilai.idpegawai == profile.idpegawai);
 				});
 			});
 		}, 500);
@@ -65,7 +91,60 @@ function PejabatNiliaController(
 	});
 
 	$scope.save = function(data) {
-		TargetSkpService.saveRealisasi(data).then((x) => {
+		var cansave = true;
+		data.targetskps.forEach((element) => {
+			if (element.kualitas <= 0) {
+				cansave = false;
+				return;
+			}
+		});
+
+		if (cansave) {
+			TargetSkpService.saveRealisasi(data).then((x) => {
+				$scope.skp.persetujuanpenilai = true;
+				SkpService.put($scope.skp).then((x) => {
+					message.info('Data Berhasil Disimpan');
+				});
+			});
+		}
+	};
+
+	$scope.changeValue = function(data) {
+		var nilai = PenilaianSkpService.penilaianStruktural(data, data.realisasi);
+		data.total = nilai.total;
+		data.capaian = nilai.capaian;
+	};
+}
+
+function PejabatSetujuiNiliaController(
+	$scope,
+	SkpService,
+	PenilaianSkpService,
+	TargetSkpService,
+	$stateParams,
+	message,
+	AuthService,
+	PeriodeService
+) {
+	var idskp = $stateParams.Id;
+	AuthService.profile().then((x) => {
+		SkpService.getBySkpId(x.idpegawai, idskp).then((skp) => {
+			$scope.skp = skp;
+
+			$scope.Penilaian = {};
+			$scope.periode = {};
+			TargetSkpService.getRealisasi($scope.skp.idskp).then((m) => {
+				$scope.Penilaian = m;
+				PeriodeService.aktifPeriode().then((x) => {
+					$scope.periode = x;
+				});
+			});
+		});
+	});
+
+	$scope.save = function(data) {
+		$scope.skp.persetujuanatasan = true;
+		SkpService.put($scope.skp).then((x) => {
 			message.info('Data Berhasil Disimpan');
 		});
 	};

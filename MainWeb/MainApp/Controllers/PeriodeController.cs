@@ -38,6 +38,8 @@ namespace MainApp.Controllers {
 
         [HttpPut]
         public IActionResult Put (int id, Periode data) {
+            data.tanggalpengajuan = data.tanggalpengajuan.ToLocalTime ();
+            data.tanggalrealisasi = data.tanggalrealisasi.ToLocalTime ();
             using (var db = new OcphDbContext (this._dbsetting)) {
                 var result = db.Periode.Update (x => new { x.tahun, x.tanggalpengajuan, x.tanggalrealisasi, x.status }, data, x => x.idperiode == id);
                 return Ok (result);

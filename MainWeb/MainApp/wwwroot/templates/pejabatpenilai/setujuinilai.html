@@ -4,10 +4,7 @@
             <div class="col">
                 <h5>Penilaian Realisasi Target SKP Dan Perilaku</h5>
             </div>
-            <div class="col">
-                <button ng-if="periode.canaddpenilaian && !skp.persetujuanatasan" ng-click="save(Penilaian)"
-                    class="btn btn-info pull-right">Simpan</button>
-            </div>
+
         </div>
     </div>
 
@@ -31,8 +28,8 @@
             </div>
             <div class="baris">
                 <label>Disetujui</label>
-                <label ng-if="skp.persetujuanpenilai" class="labelValue">: <span>Ya</span></label>
-                <label ng-if="!skp.persetujuanpenilai" class="labelValue">: <span>Belum</span></label>
+                <label ng-if="skp.persetujuanatasan" class="labelValue">: <span>Ya</span></label>
+                <label ng-if="!skp.persetujuanatasan" class="labelValue">: <span>Belum</span></label>
             </div>
         </div>
 
@@ -77,9 +74,7 @@
                             <td>{{data.realisasi.biaya}}</td>
                             <td>{{data.realisasi.kuantitas*data.bobot|number :2}}</td>
                             <td>{{data.realisasi.kuantitas}}</td>
-                            <td class="tdValue"><input ng-change="changeValue(data)" class="form-control" type="number"
-                                    ng-model="data.realisasi.kualitas">
-                            </td>
+                            <td>{{data.realisasi.kualitas}}</td>
                             <td>{{data.realisasi.waktu}}</td>
                             <td>{{data.realisasi.biaya}}</td>
 
@@ -108,11 +103,9 @@
                     <tbody>
                         <tr ng-repeat="data in Penilaian.perilaku">
                             <td class="nomor">{{$index+1}}</td>
-                            <td class="tdValue">{{data.perilaku}}</td>
-                            <td class="tdValue"><input ng-change="changePerilakuValue(data)" class="form-control"
-                                    type="number" ng-model="data.nilaiperilaku.nilai">
-                            </td>
-                            <td>{{data.nilaiperilaku.status}}</td>
+                            <td>{{data.perilaku}}</td>
+                            <td class="tdValue">{{data.nilaiperilaku.nilai}}</td>
+                            <td class="tdValue">{{data.nilaiperilaku.status}}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -125,20 +118,28 @@
                 <h4>Keberatan</h4>
             </div>
             <div class="card-body">
-                <form>
+                <form ng-submit="save(skp)">
+                    <div class="form-group">
+                        <label for="keberatan">Keberatan Pejabat Penilai</label>
+                        <textarea ng-model="skp.keberatanpenilai" class="form-control" disabled></textarea>
+                    </div>
                     <div class="form-group">
                         <label for="keberatan">Keberatan Pegawai</label>
                         <textarea ng-model="skp.keberatanpegawai" class="form-control" disabled></textarea>
                     </div>
                     <div class="form-group">
-                        <label for="keberatan">Keberatan Atasan Pejabat Penilai</label>
-                        <textarea ng-model="skp.keberatanatasan" class="form-control" disabled></textarea>
-                    </div>
-                    <div class="form-group">
                         <label for="keberatan">Keberatan Anda</label>
-                        <textarea ng-model="skp.keberatanpenilai" class="form-control"></textarea>
+                        <textarea ng-model="skp.keberatanatasan" class="form-control"></textarea>
                     </div>
-
+                    <div ng-if="skp.persetujuanpenilai">
+                        <div ng-if="(skp.keberatanatasan.length>0)" class="form-group">
+                            <button type="submit" class="btn btn-success">Simpan Keberatan</button>
+                        </div>
+                        <div ng-if="(!skp.keberatanatasan || skp.keberatanatasan.length <= 0)" class="form-group">
+                            <button ng-hide="skp.persetujuanatasan" type="submit" class="btn btn-success">Setujui
+                                Berkas</button>
+                        </div>
+                    </div>
                 </form>
 
             </div>

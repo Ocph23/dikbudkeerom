@@ -19,10 +19,22 @@ angular.module('app.pejabatPenilai.router', [ 'ui.router' ]).config(function($st
 			controller: 'pejabat.pegawai.controller',
 			templateUrl: './templates/pejabatpenilai/pegawai.html'
 		})
+		.state('pejabat-persetujuan', {
+			url: '/persetujuan',
+			parent: 'pejabat',
+			controller: 'pejabat.persetujuan.controller',
+			templateUrl: './templates/pejabatpenilai/setujui.html'
+		})
 		.state('pejabat-nilai', {
 			url: '/nilai/:Id',
 			parent: 'pejabat',
 			controller: 'pejabat.nilai.controller',
 			templateUrl: './templates/pejabatpenilai/nilai.html'
+		})
+		.state('pejabat-setujuinilai', {
+			url: '/setujuinilai/:Id',
+			parent: 'pejabat',
+			controller: 'pejabat.setujuinilai.controller',
+			templateUrl: './templates/pejabatpenilai/setujuinilai.html'
 		});
 });

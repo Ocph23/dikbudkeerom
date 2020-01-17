@@ -11,7 +11,16 @@
                 <a ui-sref="pejabat-home">Home</a>
             </li>
             <li>
-                <a ui-sref="pejabat-pegawai">DATA PEGAWAI</a>
+                <a href="" data-target="#pejabat" data-toggle="collapse" aria-expanded="false"
+                    class="dropdown-toggle">DATA PEGAWAI</a>
+                <ul class="collapse list-unstyled" id="pejabat">
+                    <li>
+                        <a ui-sref="pejabat-pegawai">Yang Dinilai</a>
+                    </li>
+                    <li>
+                        <a ui-sref="pejabat-persetujuan">Yang Disetujui</a>
+                    </li>
+                </ul>
             </li>
 
         </ul>

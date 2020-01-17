@@ -32,6 +32,23 @@ namespace MainApp.Controllers {
             }
         }
 
+        [HttpPut]
+
+        public IActionResult Put (Pegawai data) {
+            try {
+                var id = data.idpegawai;
+                using (var db = new OcphDbContext (this._dbsetting)) {
+                    var result = db.Pegawai.Update (x => new { x.idjabatan, x.nama, x.nip, x.pangkat, x.unitorganisasi }, data, m => m.idpegawai == id);
+                    if (result)
+                        return Ok (result);
+                    throw new System.Exception ("Data Tidak Berhasil Diubah");
+                }
+            } catch (System.Exception ex) {
+
+                return BadRequest (ex.Message);
+            }
+        }
+
         [HttpGet]
         public IActionResult GetById (int id) {
             using (var db = new OcphDbContext (this._dbsetting)) {
@@ -103,6 +120,38 @@ namespace MainApp.Controllers {
                 var user = User.GetProfile (db);
                 var result = from a in db.SKP.Where (x => x.idperiode == id)
                 join b in db.Periode.Select () on a.idperiode equals b.idperiode join c in db.PejabatPenilai.Select () on a.idpejabatpenilai equals c.idpejabat join d in db.Pegawai.Select () on c.idpegawai equals d.idpegawai join e in db.PejabatPenilai.Select () on a.idatasanpejabat equals e.idpejabat join f in db.Pegawai.Select () on e.idpegawai equals f.idpegawai
+
+                select new Skp {
+                    idjabatan = a.idjabatan,
+                    idpegawai = a.idpegawai, idpejabatpenilai = a.idpejabatpenilai, idperiode = a.idperiode, idskp = a.idskp,
+                    tanggal = a.tanggal, periode = b, PejabatPenilai = d, AtasanPejabatPenilai = f
+                };
+
+                var pegawai = (from skp in result join a in db.Pegawai.Select () on skp.idpegawai equals a.idpegawai join b in db.User.Select () on a.iduser equals b.iduser join c in db.Jabatan.Select () on a.idjabatan equals c.idjabatan select new Pegawai {
+                    iduser = a.iduser, idpegawai = a.idpegawai, jabatan = c, idjabatan = a.idjabatan,
+                        nama = a.nama, nip = a.nip, pangkat = a.pangkat, tmt = a.tmt, unitorganisasi = a.unitorganisasi, status = b.aktif
+                }).ToList ();
+
+                var datas = from a in result join b in pegawai on a.idpegawai equals b.idpegawai
+                select new Skp {
+                    idjabatan = a.idjabatan,
+                    idpegawai = a.idpegawai, idpejabatpenilai = a.idpejabatpenilai, idperiode = a.idperiode, idskp = a.idskp,
+                    tanggal = a.tanggal, periode = a.periode, PejabatPenilai = a.PejabatPenilai, AtasanPejabatPenilai = a.AtasanPejabatPenilai, Pegawai = b
+                };
+
+                return Ok (datas);
+            }
+        }
+
+        public IActionResult GetPegawaiByPersetujuanAndPeriodeId (int id) {
+            using (var db = new OcphDbContext (_dbsetting)) {
+                var user = User.GetProfile (db);
+                var result = from a in db.SKP.Where (x => x.idperiode == id)
+                join b in db.Periode.Select () on a.idperiode equals b.idperiode
+                join c in db.PejabatPenilai.Select () on a.idatasanpejabat equals c.idpejabat
+                join d in db.Pegawai.Select () on c.idpegawai equals d.idpegawai
+                join e in db.PejabatPenilai.Select () on a.idatasanpejabat equals e.idpejabat
+                join f in db.Pegawai.Select () on e.idpegawai equals f.idpegawai
 
                 select new Skp {
                     idjabatan = a.idjabatan,

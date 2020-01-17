@@ -30,6 +30,23 @@ namespace MainApp.Models.Data {
 
           [DbColumn ("idatasanpejabat")]
           public int idatasanpejabat { get; set; }
+
+          [DbColumn ("persetujuanatasan")]
+          public bool persetujuanatasan { get; set; }
+
+          [DbColumn ("persetujuanpenilai")]
+          public bool persetujuanpenilai { get; set; }
+
+          [DbColumn ("keberatanpegawai")]
+          public string keberatanpegawai { get; set; }
+
+          [DbColumn ("keberatanpenilai")]
+          public string keberatanpenilai { get; set; }
+
+          [DbColumn ("keberatanatasan")]
+          public string keberatanatasan { get; set; }
+
+          ///
           public Periode periode { get; set; }
           public Pegawai pejabat { get; set; }
           public Pegawai AtasanPejabatPenilai { get; set; }

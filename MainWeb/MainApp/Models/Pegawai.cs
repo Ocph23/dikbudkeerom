@@ -32,6 +32,7 @@ namespace MainApp.Models.Data {
 
           [DbColumn ("unitorganisasi")]
           public string unitorganisasi { get; set; }
+
           public string password { get; set; }
           public Jabatan jabatan { get; set; }
           public bool status { get; set; }

@@ -120,8 +120,12 @@ namespace MainApp.Services {
         public static Pegawai GetProfile (this System.Security.Claims.ClaimsPrincipal user, OcphDbContext db) {
             var claim = user.Claims.Where (x => x.Type == ClaimTypes.NameIdentifier).FirstOrDefault ();
             var result = db.User.Where (x => x.username == claim.Value).FirstOrDefault ();
-            var pegawai = db.Pegawai.Where (x => x.iduser == result.iduser).FirstOrDefault ();
-            return pegawai;
+            var pegawai = from a in db.Pegawai.Where (x => x.iduser == result.iduser)
+            join b in db.Jabatan.Select () on a.idjabatan equals b.idjabatan select new Pegawai {
+                idjabatan = a.idjabatan, idpegawai = a.idpegawai, iduser = a.iduser, jabatan = b, nama = a.nama, nip = a.nip, pangkat = a.pangkat,
+                status = a.status, tmt = a.tmt, unitorganisasi = a.unitorganisasi
+            };
+            return pegawai.FirstOrDefault ();
         }
 
         public static bool AddToRole (this User user, OcphDbContext db, string roleName) {

@@ -15,7 +15,7 @@ td {
 }
 
 .tdValue {
-  width: 50px;
+  min-width: 0px;
   text-align: center;
 }
 

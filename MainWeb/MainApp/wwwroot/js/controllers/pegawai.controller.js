@@ -3,13 +3,39 @@ angular
 	.module('app.pegawai.controller', [])
 	.controller('pegawai.controller', PegawaiController)
 	.controller('pegawai.home.controller', HomeController)
+	.controller('pegawai.profile.controller', ProfileController)
 	.controller('pegawai.skp.controller', SkpController)
 	.controller('pegawai.realisasi.controller', RealisasiController)
 	.controller('pegawai.inputrealisasi.controller', InputRealisasiController)
 	.controller('pegawai.inputskp.controller', InputSkpController);
 function PegawaiController($scope, AuthService, $state) {
-	AuthService.Init([ 'pegawai' ]);
+	if (AuthService.userInRole('pegawai')) AuthService.Init([ 'pegawai' ]);
 	$state.go('pegawai-home');
+}
+function ProfileController($scope, AuthService, PeriodeService, JabatanService, PegawaiService, SkpService) {
+	AuthService.Init([ 'pegawai' ]);
+	$scope.caneditjabatan = false;
+	PeriodeService.aktifPeriode().then((m) => {
+		var periode = m[0];
+		AuthService.profile().then((n) => {
+			$scope.model = n;
+			$scope.model.tmt = new Date($scope.model.tmt);
+			JabatanService.get().then((jab) => {
+				$scope.Jabatan = jab;
+				SkpService.get(n.idpegawai).then((z) => {
+					$scope.datas = z;
+					var dataExists = $scope.datas.find((x) => x.idperiode === periode.idperiode);
+					if (dataExists) {
+						$scope.caneditjabatan = true;
+					}
+				});
+			});
+		});
+	});
+
+	$scope.save = function(data) {
+		PegawaiService.put(data).then((x) => {});
+	};
 }
 
 function HomeController($scope, AuthService, $state) {}
@@ -169,17 +195,20 @@ function InputRealisasiController(
 	AuthService,
 	TargetSkpService,
 	$stateParams,
+	SkpService,
 	message,
 	PeriodeService
 ) {
 	var idskp = $stateParams.Id;
 	var idperiode = $stateParams.idperiode;
-	var skp = {};
 	$scope.data = {};
 	PeriodeService.aktifPeriode().then((m) => {
 		$scope.periode = m;
 		TargetSkpService.getRealisasi(idskp).then((x) => {
 			$scope.data = x;
+			SkpService.getBySkpId(0, idskp).then((skp) => {
+				$scope.skp = skp;
+			});
 		});
 	});
 
@@ -205,5 +234,11 @@ function InputRealisasiController(
 	};
 	$scope.print = function() {
 		$state.go('reportskp', { Id: idskp });
+	};
+
+	$scope.saveKeberatan = function(data) {
+		SkpService.put(data).then((x) => {
+			message.info('Keberatan Berhasil Disimpan');
+		});
 	};
 }

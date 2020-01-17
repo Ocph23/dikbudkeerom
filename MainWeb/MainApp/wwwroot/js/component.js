@@ -12,7 +12,7 @@ angular.module('app.conponent', []).component('userlogin', {
 			AuthService.logOff();
 		};
 	},
-	template: `{{$ctrl.username}}
+	template: `<a ui-sref="pegawai-profile">{{$ctrl.username}}</a>
     <span>| <a href="" ng-click="logoff()">Log Off</a></span>
     `
 });

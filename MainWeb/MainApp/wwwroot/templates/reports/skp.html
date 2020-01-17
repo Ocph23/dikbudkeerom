@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="../../css/report.css">
+
 <div class="container skp">
 
     <div class="title">
@@ -105,16 +107,17 @@
                             <div class="ttdmain">
                                 <br />
                                 <div>10. Diterima Tanggal : {{skp.tanggal|date:'dd-MM-yyyy'}}</div>
-                                <div>pegawai Negeri Sipil Yang Dinilai</div>
-                                <div class="nama">{{skp.pejabatPenilai.nama}}</div>
-                                <div class="nip">NIP.{{skp.pejabatPenilai.nip}}</div>
+                                <div>Pegawai Negeri Sipil Yang Dinilai</div>
+                                <div class="nama">{{skp.pegawai.nama}}</div>
+                                <div class="nip">NIP.{{skp.pegawai.nip}}</div>
                             </div>
                         </div>
                         <div class="ttdcapaianz">
                             <div class="ttdmain">
                                 <br />
                                 <div>11. Diterima Tanggal {{skp.tanggal|date:'dd-MM-yyyy'}}</div>
-                                <div>Atasn Pejabat</div>
+                                <div>Atasan Pejabat</div>
+
                                 <div class="nama">{{skp.atasanPejabatPenilai.nama}}</div>
                                 <div class="nip">NIP.{{skp.pejabatPenilai.nip}}</div>
                             </div>
@@ -295,6 +298,7 @@
                                 <div class="keberatan-pegawai">
                                     <h6>6. KEBERATAN DARI PEGAWAI NEGERI</h6>
                                     <h6>YANG DINILAI APABILA ADA</h6>
+                                    <p>{{skp.keberatanpegawai}}</p>
                                     <p class="tanggal">Tanggal, ............</p>
                                 </div>
                             </td>
@@ -307,11 +311,13 @@
                     <div class="keberatan">
                         <h6>6. TANGGAPAN PEJABAT PENILAI</h6>
                         <h6>ATAS KEBERATAN</h6>
+                        <p>{{skp.keberatanpenilai}}</p>
                         <p class="tanggal">Tanggal, ............</p>
                     </div>
                     <div class="keberatan">
                         <h6>7. KEPUTUSAN ATASAN PEJABAT</h6>
                         <h6>PENILAIAN ATAS KEBERATAN</h6>
+                        <p>{{skp.keberatanatasan}}</p>
                         <p class="tanggal">Tanggal, ............</p>
                     </div>
                 </td>

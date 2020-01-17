@@ -8,13 +8,6 @@ body {
     margin-bottom: 5px;
     text-align: center;
   }
-  .info-jangkawaktu {
-  }
-
-  .skp-body {
-  }
-  .penilaian-body {
-  }
 }
 
 th,
@@ -24,7 +17,7 @@ td {
 }
 
 .tdValue {
-  width: 50px;
+  min-width: 0px;
   text-align: center;
 }
 

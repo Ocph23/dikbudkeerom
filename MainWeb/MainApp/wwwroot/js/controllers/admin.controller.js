@@ -36,9 +36,10 @@ function adminPeriodeController($scope, AuthService, PeriodeService, message) {
 			});
 		} else {
 			PeriodeService.put(model).then((response) => {
-				var data = $scope.datas.find((x) => x.idperilaku == model.idperilaku);
+				var data = $scope.datas.find((x) => x.idperiode == model.idperiode);
 				if (data) {
-					data.perilaku = model.perilaku;
+					data.tanggalpengajuan = model.tanggalpengajuan;
+					data.tanggalrealisasi = model.tanggalrealisasi;
 				}
 				message.info('Data Berhasil Disimpan');
 				$scope.model = {};

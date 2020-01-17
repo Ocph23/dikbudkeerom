@@ -13,6 +13,12 @@ angular.module('app.pegawai.router', [ 'ui.router' ]).config(function($stateProv
 			controller: 'pegawai.home.controller',
 			templateUrl: './templates/pegawai/home.html'
 		})
+		.state('pegawai-profile', {
+			url: '/profile',
+			parent: 'pegawai',
+			controller: 'pegawai.profile.controller',
+			templateUrl: './templates/pegawai/profile.html'
+		})
 		.state('pegawai-skp', {
 			url: '/skp',
 			parent: 'pegawai',

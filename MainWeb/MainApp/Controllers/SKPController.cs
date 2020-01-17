@@ -33,6 +33,8 @@ namespace MainApp.Controllers {
 
                 select new Skp {
                 idjabatan = a.idjabatan,
+                persetujuanatasan = a.persetujuanatasan, persetujuanpenilai = a.persetujuanpenilai,
+                keberatanatasan = a.keberatanatasan, keberatanpegawai = a.keberatanpegawai, keberatanpenilai = a.keberatanpenilai,
                 idpegawai = a.idpegawai, idpejabatpenilai = a.idpejabatpenilai, idperiode = a.idperiode, idskp = a.idskp,
                 tanggal = a.tanggal, periode = b, PejabatPenilai = d, AtasanPejabatPenilai = f
                 };
@@ -56,10 +58,14 @@ namespace MainApp.Controllers {
         [HttpGet]
         public IActionResult GetSkpBySkpIdAndPegawaiId (int Id, int skpid) {
             using (var db = new OcphDbContext (this._dbsetting)) {
-                var result = from a in db.SKP.Where (x => x.idskp == skpid) join b in db.Periode.Select () on a.idperiode equals b.idperiode join c in db.PejabatPenilai.Select () on a.idpejabatpenilai equals c.idpejabat join d in db.Pegawai.Select () on c.idpegawai equals d.idpegawai join e in db.PejabatPenilai.Select () on a.idatasanpejabat equals e.idpejabat join f in db.Pegawai.Select () on e.idpegawai equals f.idpegawai
+                var result = from a in db.SKP.Where (x => x.idskp == skpid) join b in db.Periode.Select ()
+                on a.idperiode equals b.idperiode join c in db.PejabatPenilai.Select () on a.idpejabatpenilai
+                equals c.idpejabat join d in db.Pegawai.Select () on c.idpegawai equals d.idpegawai join e in db.PejabatPenilai.Select ()
+                on a.idatasanpejabat equals e.idpejabat join f in db.Pegawai.Select () on e.idpegawai equals f.idpegawai
 
                 select new Skp {
-                idjabatan = a.idjabatan,
+                idjabatan = a.idjabatan, persetujuanatasan = a.persetujuanatasan, persetujuanpenilai = a.persetujuanpenilai,
+                keberatanatasan = a.keberatanatasan, keberatanpegawai = a.keberatanpegawai, keberatanpenilai = a.keberatanpenilai,
                 idpegawai = a.idpegawai, idpejabatpenilai = a.idpejabatpenilai, idperiode = a.idperiode, idskp = a.idskp,
                 tanggal = a.tanggal, periode = b, PejabatPenilai = d, AtasanPejabatPenilai = f
                 };
@@ -71,7 +77,9 @@ namespace MainApp.Controllers {
 
                 var datas = from a in result join b in pegawai on a.idpegawai equals b.idpegawai
                 select new Skp {
-                    idjabatan = a.idjabatan,
+
+                    idjabatan = a.idjabatan, persetujuanatasan = a.persetujuanatasan, persetujuanpenilai = a.persetujuanpenilai,
+                    keberatanatasan = a.keberatanatasan, keberatanpegawai = a.keberatanpegawai, keberatanpenilai = a.keberatanpenilai,
                     idpegawai = a.idpegawai, idpejabatpenilai = a.idpejabatpenilai, idperiode = a.idperiode, idskp = a.idskp,
                     tanggal = a.tanggal, periode = a.periode, PejabatPenilai = a.PejabatPenilai, AtasanPejabatPenilai = a.AtasanPejabatPenilai, Pegawai = b
                 };
@@ -93,7 +101,10 @@ namespace MainApp.Controllers {
         [HttpPut]
         public IActionResult Put (int id, Skp data) {
             using (var db = new OcphDbContext (this._dbsetting)) {
-                var result = db.SKP.Update (x => new { x.idpejabatpenilai, x.tanggal }, data, x => x.idskp == id);
+                var result = db.SKP.Update (x => new {
+                    x.idpejabatpenilai, x.tanggal, x.persetujuanatasan, x.persetujuanpenilai,
+                        x.keberatanatasan, x.keberatanpegawai, x.keberatanpenilai
+                }, data, x => x.idskp == id);
                 return Ok (result);
             }
         }

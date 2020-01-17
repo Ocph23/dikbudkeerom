@@ -1,6 +1,6 @@
 angular.module('app.pegawai.service', []).factory('PegawaiService', PegawaiService);
 
-function PegawaiService($http, AuthService, helperServices, $q) {
+function PegawaiService($http, AuthService, helperServices, $q, message) {
 	var datas = [];
 	var pejabatPenilais = [];
 	var instance = false;
@@ -8,6 +8,7 @@ function PegawaiService($http, AuthService, helperServices, $q) {
 
 	return {
 		get: get,
+		put: put,
 		getPejabatPenilai: getPejabatPenilai,
 		findNotAsPejabat: findPegawaiNotAsPejabat,
 		setAsPejabat: setAsPejabat,
@@ -33,6 +34,25 @@ function PegawaiService($http, AuthService, helperServices, $q) {
 			);
 		}
 
+		return defer.promise;
+	}
+
+	function put(data) {
+		var defer = $q.defer();
+		$http({
+			method: 'Put',
+			url: helperServices.url + '/pegawai/put',
+			headers: AuthService.getHeader(),
+			data: data
+		}).then(
+			(response) => {
+				defer.resolve(response.data);
+				message.info('Data Tersimpan');
+			},
+			(err) => {
+				helperServices.error(err);
+			}
+		);
 		return defer.promise;
 	}
 

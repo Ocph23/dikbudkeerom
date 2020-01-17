@@ -1,0 +1,46 @@
+<div class="card">
+    <div class="card-header">
+        <h4>PROFILE PEGAWAI</h4>
+    </div>
+    <div class="card-body">
+
+        <form ng-submit="save(model)">
+            <div class="form-group">
+                <label for="nip">NIP</label>
+                <input ng-model="model.nip" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="nama">Nama</label>
+                <input ng-model="model.nama" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="pangkat">Pangkat/Golongan</label>
+                <input ng-model="model.pangkat" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="tmt">TMT</label>
+                <input type="date" ng-model="model.tmt" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="unitkerja1">Unit Kerja</label>
+                <input ng-model="model.unitorganisasi" class="form-control" required>
+            </div>
+
+
+            <div class="form-group">
+                <label for="jabatan">Jabatan</label>
+                <select class="form-control" ng-disabled="caneditjabatan" ng-model=model.jabatan
+                    ng-options="item as item.nama for item in Jabatan track by item.idjabatan"></select>
+            </div>
+
+            <div class="text-right info-auth">
+                <button type="submit" class="btn btn-primary">
+                    Simpan
+                </button>
+            </div>
+        </form>
+
+    </div>
+</div>

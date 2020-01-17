@@ -14,11 +14,23 @@
     </div>
 
     <div class="card-body">
-        <table class="table" datatable="ng">
+        <table class="table table-bordered" datatable="ng">
             <thead>
                 <tr>
-                    <th>No</th>
-                    <th>Kegiatan</th>
+                    <th rowspan="2">No</th>
+                    <th rowspan="2">Kegiatan</th>
+                    <th colspan="5">Target</th>
+                    <th colspan="5">Realisasi</th>
+                    <th rowspan="2">Peng hitunga </th>
+                    <th rowspan="2">Nilai Capaian SKP</th>
+                </tr>
+                <tr>
+                    <th>AK</th>
+                    <th>Kuan titas</th>
+                    <th>Kua litas</th>
+                    <th>Waktu</th>
+                    <th>Biaya</th>
+                    <th>AK</th>
                     <th>Kuantitas</th>
                     <th>Kualitas</th>
                     <th>Waktu</th>
@@ -27,15 +39,54 @@
             </thead>
             <tbody>
                 <tr ng-repeat="data in data.targetskps">
-                    <td>{{$index+1}}</td>
+                    <td class="nomor">{{$index+1}}</td>
                     <td>{{data.kegiatan}}</td>
+                    <td>{{data.kuantitas*data.bobot|number :2}}</td>
                     <td>{{data.kuantitas}}</td>
                     <td>{{data.kualitas}}</td>
                     <td>{{data.waktu}}</td>
-                    <td>{{data.biaya}}</td>
+                    <td>{{data.realisasi.biaya}}</td>
+                    <td>{{data.realisasi.kuantitas*data.bobot|number :2}}</td>
+                    <td><input ng-change="changeValue(data)" class="form-control" type="number"
+                            ng-model="data.realisasi.kuantitas">
+                    <td class="tdValue"><input ng-change="changeValue(data)" class="form-control" type="number"
+                            ng-model="data.realisasi.kualitas" disabled>
+                    </td>
+                    <td class="tdValue"><input ng-change="changeValue(data)" class="form-control" type="number"
+                            ng-model="data.realisasi.waktu">
+                    <td class="tdValue"><input ng-change="changeValue(data)" class="form-control" type="number"
+                            ng-model="data.realisasi.biaya">
+                    <td>{{data.total |number :2}}</td>
+                    <td>{{data.capaian|number :2}}</td>
+
                 </tr>
             </tbody>
         </table>
+    </div>
+</div>
+<div class="card" style="margin-top: 10px;">
+    <div class="card-header">
+        <h4>Keberatan</h4>
+    </div>
+    <div class="card-body">
+        <form ng-submit="saveKeberatan(skp)">
+            <div class="form-group">
+                <label for="keberatan">Keberatan Pejabat Penilai</label>
+                <textarea ng-model="skp.keberatanpenilai" class="form-control" disabled></textarea>
+            </div>
+            <div class="form-group">
+                <label for="keberatan">Keberatan Atasan Pejabat Penilai</label>
+                <textarea ng-model="skp.keberatanatasan" class="form-control" disabled></textarea>
+            </div>
+            <div class="form-group">
+                <label for="keberatan">Keberatan Anda</label>
+                <textarea ng-model="skp.keberatanpegawai" class="form-control"></textarea>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-success">Simpan Keberatan</button>
+            </div>
+        </form>
+
     </div>
 </div>
 

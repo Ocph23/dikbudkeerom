@@ -13,7 +13,7 @@ function SkpService($http, AuthService, helperServices, message, $q) {
 		get: get,
 		getBySkpId: getBySkpId,
 		post: post,
-		put: put,
+		put: putData,
 		delete: deleteItem
 	};
 	function get(Id) {
@@ -77,7 +77,8 @@ function SkpService($http, AuthService, helperServices, message, $q) {
 
 		return defer.promise;
 	}
-	function put(data) {
+
+	function putData(data) {
 		var defer = $q.defer();
 		$http({
 			method: 'put',
