@@ -6,8 +6,8 @@
             </div>
             <div class="col">
                 <i ng-click="print()" class="fa fa-print fa-2x pull-right"></i>
-                <i class="fa fa-plus fa-2x text-success pull-right" ng-click="create()" data-toggle="modal"
-                    data-target="#exampleModal"></i>
+                <i ng-if="periode.canaddskp" class="fa fa-plus fa-2x text-success pull-right" ng-click="create()"
+                    data-toggle="modal" data-target="#exampleModal"></i>
             </div>
         </div>
     </div>
@@ -23,7 +23,7 @@
                     <th>Kualitas</th>
                     <th>Waktu</th>
                     <th>Biaya</th>
-                    <th></th>
+                    <th ng-if="periode.canaddskp"></th>
                 </tr>
             </thead>
             <tbody>
@@ -35,7 +35,7 @@
                     <td class="text-center">{{data.kualitas}}</td>
                     <td class="text-center">{{data.waktu}}</td>
                     <td class="text-right">{{data.biaya}}</td>
-                    <td>
+                    <td ng-if="periode.canaddskp">
                         <a href="" ng-click="selectedItem(data)" data-toggle="modal" data-target="#exampleModal"><i
                                 class="fa fa-edit fa-2x text-warning pull-right"></i></a>
                         <a href="" ng-click="delete(data)"><i class="fa fa-remove fa-2x text-danger pull-right"></i></a>

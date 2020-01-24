@@ -14,9 +14,8 @@ function periodeService($http, AuthService, helperServices, message, $q) {
 
 	function aktifPeriode() {
 		var defer = $q.defer();
-
 		var periode = {};
-		if (instance) {
+		get().then((x) => {
 			periode = datas.find((x) => x.status === 'Buka');
 			if (periode) {
 				if (new Date() <= new Date(periode.tanggalpengajuan)) {
@@ -34,27 +33,7 @@ function periodeService($http, AuthService, helperServices, message, $q) {
 				message.error('Periode Penilaian Belum Di Buka');
 				defer.reject();
 			}
-		} else {
-			get().then((x) => {
-				periode = x;
-				if (periode) {
-					if (new Date() <= new Date(periode.tanggalpengajuan)) {
-						periode.canaddskp = true;
-					}
-					if (new Date() <= new Date(periode.tanggalrealisasi)) {
-						periode.canaddrealisasi = true;
-					}
-					if (new Date() > new Date(periode.tanggalrealisasi)) {
-						periode.canaddpenilaian = true;
-					}
-
-					defer.resolve(periode);
-				} else {
-					message.error('Periode Penilaian Belum Di Buka');
-					defer.reject();
-				}
-			});
-		}
+		});
 
 		return defer.promise;
 	}

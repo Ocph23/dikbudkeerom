@@ -16,7 +16,7 @@ function ProfileController($scope, AuthService, PeriodeService, JabatanService, 
 	AuthService.Init([ 'pegawai' ]);
 	$scope.caneditjabatan = false;
 	PeriodeService.aktifPeriode().then((m) => {
-		var periode = m[0];
+		var periode = m;
 		AuthService.profile().then((n) => {
 			$scope.model = n;
 			$scope.model.tmt = new Date($scope.model.tmt);

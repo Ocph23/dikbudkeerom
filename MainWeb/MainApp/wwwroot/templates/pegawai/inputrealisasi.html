@@ -47,11 +47,8 @@
                     <td>{{data.waktu}}</td>
                     <td>{{data.realisasi.biaya}}</td>
                     <td>{{data.realisasi.kuantitas*data.bobot|number :2}}</td>
-                    <td><input ng-change="changeValue(data)" class="form-control" type="number"
-                            ng-model="data.realisasi.kuantitas">
-                    <td class="tdValue"><input ng-change="changeValue(data)" class="form-control" type="number"
-                            ng-model="data.realisasi.kualitas" disabled>
-                    </td>
+                    <td>{{data.realisasi.kuantitas}}</td>
+                    <td>{{data.realisasi.kualitas}}</td>
                     <td class="tdValue"><input ng-change="changeValue(data)" class="form-control" type="number"
                             ng-model="data.realisasi.waktu">
                     <td class="tdValue"><input ng-change="changeValue(data)" class="form-control" type="number"
