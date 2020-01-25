@@ -72,6 +72,7 @@ function PejabatNiliaController(
 	TargetSkpService,
 	$stateParams,
 	message,
+	$state,
 	AuthService,
 	PeriodeService
 ) {
@@ -114,6 +115,9 @@ function PejabatNiliaController(
 		data.total = nilai.total;
 		data.capaian = nilai.capaian;
 	};
+	$scope.print = function() {
+		$state.go('reportskp', { Id: $scope.skp.idskp });
+	};
 }
 
 function PejabatSetujuiNiliaController(
@@ -123,6 +127,7 @@ function PejabatSetujuiNiliaController(
 	TargetSkpService,
 	$stateParams,
 	message,
+	$state,
 	AuthService,
 	PeriodeService
 ) {
@@ -153,5 +158,8 @@ function PejabatSetujuiNiliaController(
 		var nilai = PenilaianSkpService.penilaianStruktural(data, data.realisasi);
 		data.total = nilai.total;
 		data.capaian = nilai.capaian;
+	};
+	$scope.print = function() {
+		$state.go('reportskp', { Id: $scope.skp.idskp });
 	};
 }

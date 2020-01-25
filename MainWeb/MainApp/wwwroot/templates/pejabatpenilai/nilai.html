@@ -5,8 +5,10 @@
                 <h5>Penilaian Realisasi Target SKP Dan Perilaku</h5>
             </div>
             <div class="col">
+                <i ng-click="print()" class="fa fa-print fa-2x pull-right"></i>
                 <button ng-if="periode.canaddpenilaian && !skp.persetujuanatasan" ng-click="save(Penilaian)"
                     class="btn btn-info pull-right">Simpan</button>
+
             </div>
         </div>
     </div>
