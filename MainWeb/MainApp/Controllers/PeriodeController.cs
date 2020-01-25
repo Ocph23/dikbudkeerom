@@ -29,10 +29,27 @@ namespace MainApp.Controllers {
         [HttpPost]
         public IActionResult Post (Periode data) {
             using (var db = new OcphDbContext (this._dbsetting)) {
-                var resultId = db.Periode.InsertAndGetLastID (data);
-                if (resultId > 0)
-                    data.idperiode = resultId;
-                return Ok (data);
+                var trans = db.BeginTransaction ();
+                try {
+
+                    var buka = db.Periode.Select ().Where (x => x.status == StatusPeriode.Buka).FirstOrDefault ();
+                    if (buka != null) {
+                        buka.status = StatusPeriode.Tutup;
+                        var updated = db.Periode.Update (x => new { x.status }, buka, x => x.idperiode == buka.idperiode);
+                        if (updated) {
+                            var resultId = db.Periode.InsertAndGetLastID (data);
+                            if (resultId > 0)
+                                data.idperiode = resultId;
+                            trans.Commit ();
+                            return Ok (data);
+                        }
+                    }
+
+                    throw new System.Exception ("Data Tidak Tersimpan");
+                } catch (System.Exception ex) {
+                    trans.Rollback ();
+                    return BadRequest (ex.Message);
+                }
             }
         }
 

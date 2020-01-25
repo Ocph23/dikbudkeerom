@@ -252,8 +252,11 @@
                             <th>JUMLAH</th>
                         </tr>
                         <tr>
-                            <td colspan="6">a. Sasaran Kerja Pegawai (SKP)<span>8*8</span></td>
-                            <td>200</td>
+                            <td colspan="6">a. Sasaran Kerja Pegawai
+                                (SKP)<span>{{sumCapaian(Penilaian.targetskps)/Penilaian.targetskps.length|number :2}}
+                                    x 60%</span></td>
+                            <td>{{sumCapaian(Penilaian.targetskps)/Penilaian.targetskps.length   *60/100|number :2}}
+                            </td>
                         </tr>
                         <tr>
                             <td rowspan="{{Penilaian.perilaku.length+4}}" colspan="3">b.Perilaku Kerja</td>
@@ -261,7 +264,7 @@
                         <tr ng-repeat="data in Penilaian.perilaku">
                             <td>{{$index+1}}. {{data.perilaku}}</td>
                             <td>{{data.nilaiperilaku.nilai}}</td>
-                            <td>{{data.nilaiperilaku.nilai}}</td>
+                            <td>{{nilaiText(data.nilaiperilaku.nilai)}}</td>
                             <td class="tdValue">{{data.nilaiperilaku.status}}</td>
                         </tr>
                         <tr>
@@ -275,7 +278,7 @@
                             <td>{{Penilaian.perilaku.length+2}}. Nilai Rata-Rata</td>
                             <td>{{jumlah()/Penilaian.perilaku.length}}</td>
                             <td>{{nilaiText(jumlah())}}</td>
-                            <td>Jumlah</td>
+                            <td></td>
                         </tr>
                         <tr>
                             <td colspan="3">{{Penilaian.perilaku.length+3}}. Nilai Perilaku Kerja <span
@@ -288,10 +291,12 @@
                         </tr>
                         <tr>
                             <td rowspan="2" colspan="7">NILAI PRESTASI KERJA </td>
-                            <td>xx</td>
+                            <td>{{(sumCapaian(Penilaian.targetskps)/Penilaian.targetskps.length   *60/100)+((jumlah()/Penilaian.perilaku.length)*40/100)|number:2}}
+                            </td>
                         </tr>
                         <tr>
-                            <td>(Baik)</td>
+                            <td>{{nilaiText((sumCapaian(Penilaian.targetskps)/Penilaian.targetskps.length   *60/100)+((jumlah()/Penilaian.perilaku.length)*40/100))}}
+                            </td>
                         </tr>
                         <tr>
                             <td colspan="8">

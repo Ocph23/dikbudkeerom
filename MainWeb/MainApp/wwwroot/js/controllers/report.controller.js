@@ -29,7 +29,11 @@ function SkpController($scope, SkpService, TargetSkpService, AuthService, $state
 	};
 
 	$scope.nilaiText = function(nilai) {
-		return nilai <= 50 ? 'Kurang' : nilai < 80 ? 'Baik' : 'Sempurna';
+		return nilai < 50
+			? 'Buruk'
+			: nilai > 51 && nilai <= 60
+				? 'Cukup'
+				: nilai > 61 && nilai <= 75 ? 'Cukup' : nilai > 51 && nilai <= 60 ? 'Baik' : 'Sangat Baik';
 	};
 	$scope.sumAK = function(data) {
 		if (data) {
