@@ -15,8 +15,8 @@
                 <tr>
                     <th rowspan="2">No</th>
                     <th rowspan="2">Kegiatan</th>
-                    <th colspan="4">Target</th>
-                    <th colspan="4">Realisasi</th>
+                    <th colspan="5">Target</th>
+                    <th colspan="5">Realisasi</th>
                     <th rowspan="2">Peng hitunga </th>
                     <th rowspan="2">Nilai Capaian SKP</th>
                 </tr>
@@ -24,10 +24,12 @@
                     <th>AK</th>
                     <th>Kuantitas</th>
                     <th>Kualitas</th>
+                    <th>Waktu</th>
                     <th>Biaya</th>
                     <th>AK</th>
                     <th>Kuantitas</th>
                     <th>Kualitas</th>
+                    <th>Waktu</th>
                     <th>Biaya</th>
 
                 </tr>
@@ -35,14 +37,16 @@
             <tbody>
                 <tr ng-repeat="data in Penilaian.targetskps">
                     <td class="nomor">{{$index+1}}</td>
-                    <td>{{data.kegiatan}}</td>
+                    <td style="width: 40% !important">{{data.kegiatan}}</td>
                     <td class="tdValue">{{data.kuantitas*data.bobot|number :2}}</td>
                     <td class="tdValue">{{data.kuantitas}}</td>
                     <td class="tdValue">{{data.kualitas}}</td>
-                    <td class="tdValue">{{data.realisasi.biaya}}</td>
+                    <td class="tdValue">{{data.waktu}}</td>
+                    <td class="tdValue">{{data.biaya}}</td>
                     <td class="tdValue">{{data.realisasi.kuantitas*data.bobot|number :2}}</td>
                     <td class="tdValue">{{data.realisasi.kuantitas}}</td>
                     <td class="tdValue">{{data.realisasi.kualitas}}</td>
+                    <td class="tdValue">{{data.realisasi.waktu}}</td>
                     <td class="tdValue">{{data.realisasi.biaya}}</td>
                     <td class="tdValue">{{data.total |number :2}}</td>
                     <td class="tdValue">{{data.capaian|number :2}}</td>
@@ -53,13 +57,14 @@
                 <tr>
                     <td colspan="2" class="text-center">Jumlah Angka Kredit</td>
                     <td>{{sumAK(Penilaian.targetskps)|number :2}}</td>
-                    <td colspan="3"></td>
+                    <td colspan="4"></td>
                     <td>{{sumAK(Penilaian.realisasi)|number :2}}</td>
                     <td colspan="4"></td>
                     <td></td>
+                    <td></td>
                 </tr>
                 <tr>
-                    <td rowspan="2" colspan="11" class="text-center">Nilai Capaian SKP</td>
+                    <td rowspan="2" colspan="13" class="text-center">Nilai Capaian SKP</td>
                     <td class="text-center">{{sumCapaian(Penilaian.targetskps)/Penilaian.targetskps.length|number :2}}
                     </td>
                 </tr>
@@ -172,7 +177,7 @@
                             </tr>
                             <!--Pejabat Penilaia-->
                             <tr>
-                                <td rowspan="6" colspan="2">1</td>
+                                <td rowspan="6" colspan="2">2</td>
                                 <td colspan="2">PEJABAT PENILAI</td>
                             </tr>
                             <tr>
@@ -197,8 +202,8 @@
                             </tr>
                             <!--Atasan Pejabat Penilaia-->
                             <tr>
-                                <td rowspan="6" colspan="2">1</td>
-                                <td colspan="2">PEJABAT PENILAI</td>
+                                <td rowspan="6" colspan="2">3</td>
+                                <td colspan="2">ATASAN PEJABAT PENILAI</td>
                             </tr>
                             <tr>
                                 <td>a. Nama</td>
