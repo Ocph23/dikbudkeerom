@@ -187,6 +187,10 @@ function InputSkpController(
 	$scope.print = function() {
 		$state.go('reportformskp', { Id: idskp });
 	};
+	$scope.printnilai = function() {
+		$state.go('reportskp', { Id: idskp });
+	};
+
 }
 
 function InputRealisasiController(

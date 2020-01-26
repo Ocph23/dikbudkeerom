@@ -5,9 +5,13 @@
                 <h5>Target SKP</h5>
             </div>
             <div class="col">
-                <i ng-click="print()" class="fa fa-print fa-2x pull-right"></i>
-                <i ng-if="periode.canaddskp" class="fa fa-plus fa-2x text-success pull-right" ng-click="create()"
+
+                <i ng-click="print()" class="fa fa-print fa-2x text-primary pull-right"></i>
+                <i ng-if="periode.canaddpenilaian" ng-click="printnilai()"
+                    class="fa fa-print fa-2x text-success pull-right"></i>
+                <i ng-if="periode.canaddskp" class="fa fa-plus fa-2x text-default pull-right" ng-click="create()"
                     data-toggle="modal" data-target="#exampleModal"></i>
+
             </div>
         </div>
     </div>
