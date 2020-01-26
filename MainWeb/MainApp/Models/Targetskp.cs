@@ -46,8 +46,8 @@ namespace MainApp.Models.Data {
 
           private double getTotal () {
                if (Realisasi != null && Realisasi.idrealisasiskp > 0) {
-                    double xkuantitas = Realisasi.kuantitas / kuantitas * 100;
-                    double xkualitas = Realisasi.kualitas / kualitas * 100;
+                    double xkuantitas = Convert.ToDouble (Realisasi.kuantitas) / kuantitas * 100;
+                    double xkualitas = Convert.ToDouble (Realisasi.kualitas) / kualitas * 100;
                     double xwaktu = (1.76 * waktu - Realisasi.waktu) / waktu * 100;
                     double xbiaya = (1.76 * biaya - Realisasi.biaya) / biaya * 100;
                     double xxbiaya = Double.IsNaN (xbiaya) ? 0 : xbiaya;
